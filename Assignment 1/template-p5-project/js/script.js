@@ -74,7 +74,20 @@ function displayFood() {
   noStroke();
   fill(food.color);
   ellipse(food.x,food.y,food.size);
+  moveFood();
   pop();
+}
+
+function moveFood() {
+  food.x = food.x +3;
+  food.y = food.y +3;
+  if (food.x >= windowWidth) {
+    food.x = 0;
+  }
+  if (food.y >= windowHeight) {
+    food.y = 0;
+  }
+
 }
 
 function collision() {
