@@ -1,0 +1,31 @@
+/*********************************************
+
+This is the style file for this project.
+
+**********************************************/
+body {
+  width: 80%;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+div {
+  width: 50%;
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+}
+
+.redacted {
+  background-color: black;
+  color: transparent;
+}
+.revealed {
+  background-color: transparent;
+  color: red;
+}
+
+.found {
+  background-color: #501c29;
+  color: white;
+}
