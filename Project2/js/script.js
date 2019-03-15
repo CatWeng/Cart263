@@ -32,7 +32,7 @@ let surprises = [
 ]
 let created = false;
 let numToys = 0;
-//let timerReset;
+let timerReset;
 
 $(document).ready(setup);
 
@@ -42,12 +42,12 @@ function setup() {
 }
 
 if (annyang) {
-  // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
+    // Saying "open the egg" shakes the egg, unwraps it and generates a toy
     'Open the egg': function(){
       generateSurprise();
     },
-
+    // Saying "try again" generates a new toy and egg
     'Try again': function() {
       resetEgg();
     },
@@ -57,13 +57,13 @@ if (annyang) {
     // Start listening. You can call this here, or attach this call to an event, button, etc.
     annyang.start();
   }
-  
+
 function generateSurprise() {
   // Shakes the egg for a more interesting visual effect
   $('.startImage').effect('shake');
   // Delay timer so the shake animation finishes before the image is swapped out
   // Displays the surprise toy after a time
-  setTimeout(function() {
+  timerReset = setTimeout(function() {
     document.getElementById('id1').src = 'assets/images/openkinder.png';
     displayToy();
   }, 500);
@@ -71,11 +71,6 @@ function generateSurprise() {
   $('#id1').removeClass('startImage');
   // Creates a restart button
   // If statement in place so only one button can exist
-  if (created == false) {
-    createButton();
-    reloadImage();
-    created = true;
-  }
 }
 
 // Grab another image from the surprises array
@@ -96,6 +91,11 @@ function reloadImage() {
 function displayToy() {
   let toyElement = document.getElementById('randomGet');
   toyElement.style.display = "block";
+  if (created == false) {
+    createButton();
+    reloadImage();
+    created = true;
+  }
 }
 // Creates a button after a time saying "TRY AGAIN" to reset the game
 function createButton() {
@@ -103,7 +103,7 @@ function createButton() {
 
   setTimeout(function() {
     buttonElement.style.display = "block";
-  }, 1000);
+  }, 500);
   let btn = document.createElement("BUTTON");
   let text = document.createTextNode("Try again");
   btn.appendChild(text);
@@ -123,7 +123,7 @@ function resetEgg() {
   created = false;
   // Remove created elements
   buttonElement.removeChild(actualButton);
-  //clearTimeout(timerReset);
+  clearTimeout(timerReset);
 }
 
 // Gets a random entry from the list of possible surprise toys
