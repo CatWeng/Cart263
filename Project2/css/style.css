@@ -1,0 +1,54 @@
+/*********************************************
+
+This is the style file for this project.
+
+**********************************************/
+
+#randomGet {
+  height: 150px;
+  z-index: 0;
+  position: relative;
+  display: none;
+}
+
+.newImage {
+  height: 100%;
+  width: auto;
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 100px;
+}
+
+#begin {
+  z-index: -1;
+  position: absolute;
+  height: 400px;
+  width: 400px;
+}
+
+.startImage {
+  height: 700px;
+}
+
+#buttonDiv {
+  margin-left: 500px;
+  margin-top: 100px;
+  z-index: -2;
+  display: none;
+/** Button styling obtained from https://www.bestcssbuttongenerator.com/**/
+}
+
+.actualButton{
+background-color:#44c767;
+-moz-border-radius:28px;
+-webkit-border-radius:28px;
+border-radius:28px;
+border:1px solid #18ab29;
+cursor:pointer;
+color:#ffffff;
+font-family:Arial;
+font-size:17px;
+padding:16px 31px;
+text-decoration:none;
+text-shadow:0px 1px 0px #2f6627;
+}
