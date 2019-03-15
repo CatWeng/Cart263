@@ -41,14 +41,31 @@ function setup() {
   $('#buttonDiv').on('click', resetEgg);
 }
 
+if (annyang) {
+  // Let's define our first command. First the text we expect, and then the function it should call
+  var commands = {
+    'Open the egg': function(){
+      generateSurprise();
+    },
+
+    'Try again': function() {
+      resetEgg();
+    },
+  };
+    // Add our commands to annyang
+    annyang.addCommands(commands);
+    // Start listening. You can call this here, or attach this call to an event, button, etc.
+    annyang.start();
+  }
+  
 function generateSurprise() {
-  // Displays the surprise toy after a time
-  setInterval(displayToy, 500);
   // Shakes the egg for a more interesting visual effect
   $('.startImage').effect('shake');
   // Delay timer so the shake animation finishes before the image is swapped out
+  // Displays the surprise toy after a time
   setTimeout(function() {
     document.getElementById('id1').src = 'assets/images/openkinder.png';
+    displayToy();
   }, 500);
   // Removes class so the egg no longer shakes when clicked
   $('#id1').removeClass('startImage');
