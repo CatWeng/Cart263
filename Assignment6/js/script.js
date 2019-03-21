@@ -38,13 +38,14 @@ $(document).ready(function() {
   $.getJSON('data/data.json', gotData);
 });
 
+  // On click refreshes the texttx
+  document.onclick = refresh;
 
-document.onclick = refresh;
-
-function refresh() {
-  $('body').empty().append();
-  $.getJSON('data/data.json', gotData);
-}
+  // Refreshes by emptying the current append and replacing it
+  function refresh() {
+    $('body').empty().append();
+    $.getJSON('data/data.json', gotData);
+  }
 
 // gotData (data)
 //
@@ -68,16 +69,14 @@ function gotData(data) {
 
   // Now the cat
   let cat = getRandomElement(data.cats);
-
   // Same again for room
   let room = getRandomElement(data.rooms);
-
   let fabric = getRandomElement(data.fabrics);
-
   let flower = getRandomElement(data.flowers);
 
   let indefinite = 'a';
-
+  // Checks if the following word starts with any letter in the vowels arrays
+  // If it's a vowel, changes the indefinite article to 'an'
   for (let i = 0; i < vowels.length; i++){
   if (room.charAt(0) === vowels[i]) {
     indefinite = 'an';
