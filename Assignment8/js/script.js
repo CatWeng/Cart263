@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   // Load data file for random words
   $.getJSON('data/data.json', gotData);
-  //speak();
+  speak();
   $('#button').on('click', readMore);
   setTimeout(loadMore, 500);
 });
@@ -34,7 +34,6 @@ function speak() {
     responsiveVoice.cancel();
     // Speak the text contents of all nodes within the current tag
     responsiveVoice.speak($(this).text());
-    //console.log($(this).text());
   });
 }
 
@@ -42,8 +41,17 @@ function gotData(data) {
   // Get a random ____ from the array in the JSON
   let food = getRandomElement(data.foods);
   console.log(food);
+  // Assume it's singular
+  //let verb = 'is';
+  // Check if the last latter of the condiment is an 's'
+  //if (food.charAt(food.length - 1) === 's') {
+    // If so, assume it's plural (this is a flawed assumption)
+    //verb = 'are';
+  //}
 
   // code from https://www.sitepoint.com/load-flickr-photos-using-jsonapi/
+  // Grabs a photo from flickr with the proper tag
+  // And appends it to the new post image
   let flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=" + food;
   $.ajax({
     url: flickerAPI,
@@ -123,7 +131,7 @@ function createCard(){
   div.appendChild(imgDiv);
       para.innerHTML="This is a recipe<span id='dots'>...</span>";
   div.appendChild(para);
-      para2.innerHTML="This is more text <br>";
+      para2.innerHTML="This is more text <br><br>";
   div.appendChild(para2);
     button.innerHTML="Read more";
   div.appendChild(button);
@@ -131,10 +139,10 @@ function createCard(){
   console.log(div);
     leftColumn.appendChild(div);
     $('#more').css("display", "none");
-    //speak();
-    $(document).on( 'click', 'button', function(){
-      readMore();
-    });
+    speak();
+  //  $(document).on( 'click', 'button', function(){
+  //    $(this).readMore();
+  //  });
 
-  //  $.getJSON('data/data.json', gotData);
+    $.getJSON('data/data.json', gotData);
 }
