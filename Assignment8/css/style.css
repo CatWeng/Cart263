@@ -4,7 +4,7 @@ This is the style file for this project.
 
 **********************************************/
 
-/* CSS taken from https://www.w3schools.com/howto/howto_css_blog_layout.asp */
+/* Blog CSS taken from https://www.w3schools.com/howto/howto_css_blog_layout.asp */
 * {
   box-sizing: border-box;
 }
@@ -13,6 +13,10 @@ body {
   font-family: Arial;
   padding: 20px;
   background: #f1f1f1;
+}
+img {
+  width: 100%;
+  height: auto;
 }
 /* Header/Blog Title */
 .header {
@@ -23,7 +27,7 @@ body {
 }
 /* Create two unequal columns that floats next to each other */
 /* Left column */
-.leftcolumn {
+#leftcolumn {
   float: left;
   width: 75%;
 }
@@ -34,10 +38,11 @@ body {
   padding-left: 20px;
 }
 /* Fake image */
-.fakeimg {
+.blogImg, .flickrImg {
   background-color: #aaa;
   width: 100%;
   padding: 20px;
+  height: auto;
 }
 /* Add a card effect for articles */
 .card {
@@ -60,8 +65,26 @@ body {
 }
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
-  .leftcolumn, .rightcolumn {
+  #leftcolumn, .rightcolumn {
     width: 100%;
     padding: 0;
+    margin: 0;
   }
+}
+
+/* Expand CSS taken from https://www.w3schools.com/howto/howto_js_collapsible.asp */
+#more {
+  display: none;
+}
+
+#button {
+background-color: #777;
+color: white;
+cursor: pointer;
+padding: 8px;
+width: 95px;
+border: none;
+text-align: left;
+outline: none;
+font-size: 15px;
 }
