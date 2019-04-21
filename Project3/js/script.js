@@ -6,7 +6,7 @@ Catherine Weng
 This project is a generative parody of cooking blogs.
 The kind of blog where you're just looking for a recipe,
 but instead, you get their life story, their dog's life story,
-their favourite candle scents, their opinion on fall outerwear,
+their favourite candle scents, their opinion on seasonal outerwear,
 their experience in learning to ride a bike and their last 3 vacations.
 ******************/
 
@@ -20,11 +20,12 @@ $(document).ready(function() {
 
   // Load data file for random words
   $.getJSON('data/data.json', gotData)
-
+  // Speaks all the inital text on the page
   speak();
-
+  // Introduces a delay between blog entries loading so as not to spam the viewer
   setTimeout(loadMore, 500);
-
+  // A subscription popup appears after a short period of time
+  popup();
 });
 
 $(document).on('click', '#button', function() {
@@ -159,6 +160,7 @@ function readMore() {
   }
 }
 
+// Building each individual blog post
 function createCard(){
   let leftColumn = document.getElementById("leftcolumn");
 
@@ -207,4 +209,37 @@ function createCard(){
     setTimeout(function(){
       $.getJSON('data/data.json', gotData);
   }, 50);
+}
+
+// Popup Code from https://www.thepolyglotdeveloper.com/2018/02/create-email-subscription-popup-jquery/
+function popup() {
+
+    var delay = 300; // milliseconds
+    var cookie_expire = 0; // days
+
+    var cookie = localStorage.getItem("list-builder");
+    if(cookie == undefined || cookie == null) {
+        cookie = 0;
+    }
+    if(((new Date()).getTime() - cookie) / (1000 * 60 * 60 * 24) > cookie_expire) {
+        $("#list-builder").delay(delay).fadeIn("fast", () => {
+            $("#popup-box").fadeIn("fast", () => {});
+        });
+        $("button[name=subscribe]").click(() => {
+            $.ajax({
+                //type: "POST",
+                //url: $("#popup-form").attr("action"),
+                //data: $("#popup-form").serialize(),
+                success: (data) => {
+                    $("#popup-box-content").html("<p style='text-align: center' class='text'>I told you not to do it. Why did you do it?</p>");
+  speak();
+                }
+            });
+        });
+        $("#popup-close").click(() => {
+            $("#list-builder, #popup-box").hide();
+            localStorage.setItem("list-builder", (new Date()).getTime());
+        });
+    }
+
 }
