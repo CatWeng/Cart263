@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
     <script src="js/libraries/rita.min.js" content="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <!-- My script(s) -->
     <script src="js/script.js"></script>
@@ -28,35 +29,53 @@
     <!-- Blog Layout taken from https://www.w3schools.com/howto/howto_css_blog_layout.asp -->
 
   <div class="header">
-    <h2 class="text">This Is A Cooking Blog</h2>
+    <h1 class="text">World's Most Annoying Blog</h1>
+    <p class="text">All text from acozykitchen.com</p>
   </div>
+
+  <!-- Popup Code from https://www.thepolyglotdeveloper.com/2018/02/create-email-subscription-popup-jquery/ -->
+  <div id="list-builder"></div>
+        <div id="popup-box">
+            <img src="assets/images/close.png" id="popup-close" />
+            <div id="popup-box-content">
+                <h1 class="text">Subscribe to This Really Annoying Blog</h1>
+                <p class="text">
+                    Please don't. It doesn't even do anything. I'm just here to be irritating.
+                </p>
+                <form id="popup-form" action="https://email_list_service_api.com">
+                    <input type="hidden" name="list" value="key_list_etc" />
+                    <input type="text" name="name" placeholder="Full Name" />
+                    <input type="text" name="email" placeholder="Email Address" />
+                    <button type="button" name="subscribe" class="text">Subscribe</button>
+                </form>
+            </div>
+        </div>
 
   <div class="row">
     <div id="leftcolumn">
       <div class="card">
-        <h2 class="text">This is a Title</h2>
-        <h5 id="date" class="text">Date</h5>
+        <h2 class="text title"></h2>
         <div class="blogImg"></div>
-        <p class="text">This is a recipe<span id="dots">...</span></p>
-        <p id="more" class="text">This is more text<br><br></p>
+        <p class="text">This is a recipe<span class="dots">...</span></p>
+        <p id="more" class="moreText text"></p>
         <button id="button" class="text">Read more</button>
       </div>
     </div>
     <div class="rightcolumn">
       <div class="card">
-        <h2 class="text">About Me</h2>
-        <div class="flickrImg"></div>
-        <p class="text">About me</p>
+        <h2 class="text title">About Me</h2>
+        <div class="aboutImg"><img src="assets/images/cat.png"></div>
+        <p class="text">This is a cat picture.</p>
       </div>
       <div class="card">
-        <h3 class="text">Popular Post</h3>
-        <div class="flickrImg"></div><br>
-        <div class="flickrImg"></div><br>
-        <div class="flickrImg"></div>
+        <h2 class="text title">Popular Posts</h2>
+        <div class="flickrImg popular"></div><br>
+        <div class="flickrImg popular"></div><br>
+        <div class="flickrImg popular"></div>
       </div>
       <div class="card">
         <h3 class="text">Follow Me</h3>
-        <p class="text">Some text..</p>
+        <p class="tex aboutImg popular"><img src="assets/images/icons.png"></p>
       </div>
     </div>
   </div>
