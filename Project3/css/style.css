@@ -5,8 +5,8 @@ This is the style file for this project.
 **********************************************/
 
 @font-face {
-  font-family: Sweet;
-  src: url(../assets/fonts/Sweet.otf);
+  font-family: Champagne;
+  src: url(../assets/fonts/Champagne.ttf);
 }
 
 @font-face {
@@ -20,26 +20,18 @@ This is the style file for this project.
 }
 /* Add a gray background color with some padding */
 body {
-  font-family: Arial;
+  font-family: Champagne;
   padding: 20px;
-  background: #f1f1f1;
+  background-color: #F8BDC4;
+  font-size: 20px;
+  color: #636363;
 }
 
-h2 {
+h1 {
   font-family: Happy;
 }
 
-.flickrImg img {
-  width: 100%;
-  height: auto;
-}
-
-.blogImg img {
-  width: 100%;
-  height: auto;
-}
-
-.aboutImg img {
+img {
   width: 100%;
   height: auto;
 }
@@ -66,10 +58,17 @@ h2 {
 }
 /* Fake image */
 .blogImg, .flickrImg, .aboutImg {
-  background-color: #aaa;
   width: 100%;
   padding: 20px;
   height: auto;
+  border-style: dashed;
+  border-color: #8D7471;
+}
+.title {
+  padding-left: 20px;
+}
+p {
+  padding-left: 20px;
 }
 /* Add a card effect for articles */
 .card {
@@ -87,7 +86,7 @@ h2 {
 .footer {
   padding: 20px;
   text-align: center;
-  background: #ddd;
+  background: white;
   margin-top: 20px;
 }
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
@@ -105,15 +104,17 @@ h2 {
 }
 
 #button {
-background-color: #777;
+background-color: #796465;
 color: white;
 cursor: pointer;
-padding: 8px;
+padding: 8px 5px;
 width: 95px;
 border: none;
 text-align: left;
 outline: none;
-font-size: 15px;
+font-size: 20px;
+font-family: Champagne;
+margin-left: 20px;
 }
 
 /* Popup CSS from https://www.thepolyglotdeveloper.com/2018/02/create-email-subscription-popup-jquery/ */
@@ -134,7 +135,7 @@ font-size: 15px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: #911e26;
+    background-color: #d4a3a9;
     color: #FFFFFF;
     width: 90%;
     max-width: 600px;
@@ -161,11 +162,13 @@ font-size: 15px;
 
 #popup-box input {
     padding: 10px;
-    border: 1px solid #333;
+    border: 1px solid #796465;
     width: 40%;
 }
 
 #popup-box button {
     padding: 10px;
-    border: 1px solid #333;
+    color: white;
+    border: 1px solid #796465;
+    background-color: #796465;
 }

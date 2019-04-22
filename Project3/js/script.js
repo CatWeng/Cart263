@@ -24,8 +24,11 @@ $(document).ready(function() {
   speak();
   // Introduces a delay between blog entries loading so as not to spam the viewer
   setTimeout(loadMore, 500);
-  // A subscription popup appears after a short period of time
+  // A subscription popup appears every 2 minutes
   popup();
+  setInterval(function() {
+  popup();
+}, 10 * 1000);
 });
 
 // Operates the Read More and read Less buttons
@@ -148,11 +151,11 @@ function loadMore(){
 function generateParagraph() {
   // Generate ten sentences for our paragraph
   // (Output is an array)
-  let sentenceArray = markov.generateSentences(10);
+  let sentenceArray = markov.generateSentences(15);
   // Turn the array into a single string by joining with spaces
   let sentenceText = sentenceArray.join(' ');
   // Put the new text onto the page
-  $(".moreText:empty").append(sentenceText + "<br><br>");
+  $(".moreText:empty").append("<p>" + sentenceText + "<br></p>");
 }
 
 // Returns a random element from the array provided
@@ -225,13 +228,13 @@ function createCard(){
 function popup() {
 
     var delay = 300; // milliseconds
-    var cookie_expire = 0; // days
+    //var cookie_expire = 0; // days
 
-    var cookie = localStorage.getItem("list-builder");
-    if(cookie == undefined || cookie == null) {
-        cookie = 0;
-    }
-    if(((new Date()).getTime() - cookie) / (1000 * 60 * 60 * 24) > cookie_expire) {
+    //var cookie = localStorage.getItem("list-builder");
+    //if(cookie == undefined || cookie == null) {
+        //cookie = 0;
+    //}
+    //if(((new Date()).getTime() - cookie) / (1000 * 60 * 60 * 24) > cookie_expire) {
         $("#list-builder").delay(delay).fadeIn("fast", () => {
             $("#popup-box").fadeIn("fast", () => {});
         });
@@ -248,7 +251,7 @@ function popup() {
         });
         $("#popup-close").click(() => {
             $("#list-builder, #popup-box").hide();
-            localStorage.setItem("list-builder", (new Date()).getTime());
+            //localStorage.setItem("list-builder", (new Date()).getTime());
         });
-    }
+    //}
 }
