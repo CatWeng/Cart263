@@ -12,8 +12,11 @@ their experience in learning to ride a bike and their last 3 vacations.
 
 "use strict";
 let $text = $('.text');
+
+//Assign variable for generated recipe
 let recipeText;
 
+// Assign variable for Markov chains
 let markov;
 
 $(document).ready(function() {
@@ -24,11 +27,11 @@ $(document).ready(function() {
   speak();
   // Introduces a delay between blog entries loading so as not to spam the viewer
   setTimeout(loadMore, 500);
-  // A subscription popup appears every 2 minutes
+  // A subscription popup appears on start and every 20 seconds
   popup();
   setInterval(function() {
   popup();
-}, 10 * 1000);
+}, 20 * 1000);
 });
 
 // Operates the Read More and read Less buttons
@@ -53,7 +56,7 @@ $(document).on('click', '#button', function() {
   }
   });
 
-// Annyang speaks any text you move your mouse over
+//Page speaks any text you move your mouse over
 function speak() {
   let options = {
     pitch: Math.random(),
@@ -75,6 +78,7 @@ function speak() {
   });
 }
 
+// Grab all the data. All of it
 function gotData(data) {
   // Get a random ____ from the array in the JSON
   let food = getRandomElement(data.foods);
@@ -98,6 +102,7 @@ function gotData(data) {
       console.log(result.items);
 
       // blessed Pippin
+      // Randomizes images loaded
       $('.flickrImg:empty').each(function() {
         $(this).append($("<img>").attr("src", result.items[Math.floor(Math.random() * result.items.length)].media.m));
       });
