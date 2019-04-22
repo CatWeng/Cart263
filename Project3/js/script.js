@@ -63,6 +63,13 @@ function speak() {
     // Speak the text contents of all nodes within the current tag
     responsiveVoice.speak($(this).text());
   });
+
+  $('.popular').on('click', function() {
+     // Cancel anything else that may currently be speaking
+    responsiveVoice.cancel();
+    // Speak the text contents of all nodes within the current tag
+    responsiveVoice.speak("This content is for premium blog subscribers only.");
+  });
 }
 
 function gotData(data) {
@@ -73,7 +80,6 @@ function gotData(data) {
   let dish = getRandomElement(data.dishes);
 
   let title = `${adjective} ${food} ${dish}`;
-
   $('.title:empty').append(title);
   //let dish = getRandomElement(data.dish);
 
@@ -245,5 +251,4 @@ function popup() {
             localStorage.setItem("list-builder", (new Date()).getTime());
         });
     }
-  //  speak();
 }
