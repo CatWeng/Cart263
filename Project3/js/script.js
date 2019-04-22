@@ -111,16 +111,6 @@ function gotData(data) {
         $(this).append($("<img>").attr("src", result.items[Math.floor(Math.random() * result.items.length)].media.m));
       });
 
-      // $.each(result.items, function (i, item) {
-        // .appendTo(".flickrImg:empty");
-
-        // $("<img>").attr("src", item.media.m).appendTo(".blogImg:empty");
-      //  console.log(flickerAPI);
-        // if (i === 0) {
-        //   return false;
-        // }
-      // });
-
         $.ajax({
             url: 'data/recipes.txt',
             dataType: 'text',
@@ -233,21 +223,12 @@ function createCard(){
 function popup() {
 
     var delay = 300; // milliseconds
-    //var cookie_expire = 0; // days
-
-    //var cookie = localStorage.getItem("list-builder");
-    //if(cookie == undefined || cookie == null) {
-        //cookie = 0;
-    //}
-    //if(((new Date()).getTime() - cookie) / (1000 * 60 * 60 * 24) > cookie_expire) {
         $("#list-builder").delay(delay).fadeIn("fast", () => {
             $("#popup-box").fadeIn("fast", () => {});
         });
         $("button[name=subscribe]").click(() => {
             $.ajax({
-                //type: "POST",
-                //url: $("#popup-form").attr("action"),
-                //data: $("#popup-form").serialize(),
+
                 success: (data) => {
                     $("#popup-box-content").html("<p style='text-align: center' class='text'>I told you not to do it. Why did you do it?</p>");
                     speak();
@@ -256,7 +237,6 @@ function popup() {
         });
         $("#popup-close").click(() => {
             $("#list-builder, #popup-box").hide();
-            //localStorage.setItem("list-builder", (new Date()).getTime());
             $("#popup-box-content").html("<h1 class='text'>Subscribe to This Really Annoying Blog</h1><p class='text'>Please don't actually. It doesn't even do anything. I'm just here to be irritating.</p> <input type='text' name='name' placeholder='Full Name' /><input type='text' name='email' placeholder='Email Address' /><button type='button' name='subscribe' class='text'>Subscribe</button></form>")
         });
     //}
