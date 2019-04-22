@@ -28,6 +28,9 @@ $(document).ready(function() {
   popup();
 });
 
+// Operates the Read More and read Less buttons
+// Adapted from https://www.w3schools.com/howto/howto_js_read_more.asp
+// Instead of working on all of them or only the first instance, detects which one is currntly being clicked
 $(document).on('click', '#button', function() {
   var parent = this.parentNode;
   console.log(parent.getElementsByClassName("dots"));
@@ -47,6 +50,7 @@ $(document).on('click', '#button', function() {
   }
   });
 
+// Annyang speaks any text you move your mouse over
 function speak() {
   let options = {
     pitch: Math.random(),
@@ -65,6 +69,13 @@ function gotData(data) {
   // Get a random ____ from the array in the JSON
   let food = getRandomElement(data.foods);
   console.log(food);
+  let adjective = getRandomElement(data.adjectives);
+  let dish = getRandomElement(data.dishes);
+
+  let title = `${adjective} ${food} ${dish}`;
+
+  $('.title:empty').append(title);
+  //let dish = getRandomElement(data.dish);
 
   // Code from https://www.sitepoint.com/load-flickr-photos-using-jsonapi/
   // Grabs a photo from flickr with the proper tag
@@ -117,6 +128,7 @@ function gotData(data) {
   });
 }
 
+// If the user has scrolled almost all the way down, generate another blog post
 function loadMore(){
   $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() > $(document).height() - 10) {
@@ -124,7 +136,6 @@ function loadMore(){
     }
  });
 }
-
 
 // CODE FROM Frankenstein and Prejudice example
 // Clears the current texts and generates a new one in its place
@@ -177,20 +188,15 @@ function createCard(){
 
   div.classList.add("card");
   imgDiv.classList.add("blogImg");
-  h2.classList.add("text");
-  h5.classList.add("text");
-    h5.setAttribute("id", "date");
+  h2.classList.add("text", "title");
   para.classList.add("text");
   paraDots.classList.add("text","dots");
   para2.classList.add("text", "moreText");
     para2.setAttribute("id", "more");
   button.classList.add("text");
     button.setAttribute("id", "button");
-
-    h2.innerHTML="This is a Title";
+//    h2.innerHTML=adjective+food;
   div.appendChild(h2);
-    h5.innerHTML="Date";
-  div.appendChild(h5);
   div.appendChild(imgDiv);
       para.innerHTML="This is a recipe";
   div.appendChild(para);
@@ -204,11 +210,9 @@ function createCard(){
     leftColumn.appendChild(div);
     $('#more').css("display", "none");
 
-    speak();
-
-    setTimeout(function(){
+      speak();
       $.getJSON('data/data.json', gotData);
-  }, 50);
+      generateParagraph();
 }
 
 // Popup Code from https://www.thepolyglotdeveloper.com/2018/02/create-email-subscription-popup-jquery/
@@ -232,7 +236,7 @@ function popup() {
                 //data: $("#popup-form").serialize(),
                 success: (data) => {
                     $("#popup-box-content").html("<p style='text-align: center' class='text'>I told you not to do it. Why did you do it?</p>");
-  speak();
+                    speak();
                 }
             });
         });
@@ -241,5 +245,5 @@ function popup() {
             localStorage.setItem("list-builder", (new Date()).getTime());
         });
     }
-
+  //  speak();
 }

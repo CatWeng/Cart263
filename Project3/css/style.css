@@ -4,6 +4,16 @@ This is the style file for this project.
 
 **********************************************/
 
+@font-face {
+  font-family: Sweet;
+  src: url(../assets/fonts/Sweet.otf);
+}
+
+@font-face {
+  font-family: Happy;
+  src: url(../assets/fonts/Happy.ttf);
+}
+
 /* Blog CSS taken from https://www.w3schools.com/howto/howto_css_blog_layout.asp */
 * {
   box-sizing: border-box;
@@ -13,6 +23,10 @@ body {
   font-family: Arial;
   padding: 20px;
   background: #f1f1f1;
+}
+
+h2 {
+  font-family: Happy;
 }
 
 .flickrImg img {
@@ -32,7 +46,8 @@ body {
 
 /* Header/Blog Title */
 .header {
-  padding: 30px;
+  font-family: Happy;
+  padding: 10px;
   font-size: 40px;
   text-align: center;
   background: white;
